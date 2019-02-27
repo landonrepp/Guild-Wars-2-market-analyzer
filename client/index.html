@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="c3.css">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel = "stylesheet" type = "text/css" href = "spinner.css">
+        <script type = 'text/javascript' src = 'jquery.js'></script>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script type = 'text/javascript' src = 'c3.js'></script>
+        <script type = 'text/javascript' src = 'index.js'></script>
+
+
+    </head>
+
+    <body>
+        <div class = "container">
+            <!-- data pulled from api -->
+            <div id = "itemInfo">
+                <img class = "itemImg">
+                <div class = "itemName"></div>
+                <div class = "itemDesc">
+                </div>
+            </div>
+            <div id = 'timeTable' class = "graph">
+                    <div class="spinner">
+                        <div class="cube1"></div>
+                        <div class="cube2"></div>
+                    </div>
+            </div>
+            <div id = 'dualFrequencyTable' class = "graph">
+                <div class="spinner">
+                    <div class="cube1"></div>
+                    <div class="cube2"></div>
+                </div>
+            </div>
+            <div id = "buyStatsContainer">
+                <h4>Buy Order Stats</h4>
+                <div class = "mean">Buy order mean:</div>
+                <div class = "variance">Buy order variance:</div>
+                <div class = "stdDeviation">Buy order Std. Deviation</div>
+            </div>
+            <div id = "sellStatsContainer">
+                <h4>Sell Order Stats</h4>
+                <div class = "mean">Sell order mean:</div>
+                <div class = "variance">Sell order variance:</div>
+                <div class = "stdDeviation">Sell order Std. Deviation</div>
+            </div>
+            <div id = "buySellAvg" class = "graph">
+                <div class="spinner">
+                    <div class="cube1"></div>
+                    <div class="cube2"></div>
+                </div>
+            </div>
+            <div id = "currentStats">
+                <h4>Current Stats</h4>
+                <div class = "currentMargin">Current Margins: </div>
+                <div class = "currentROI">Current return on investment(ROI) per item: </div>
+                <div class = "currentROIUndercut">Current ROI with a 1 copper undercut:</div>
+            </div>
+            <div id="pumpAndDump">
+                <div class="spinner">
+                        <div class="cube1"></div>
+                        <div class="cube2"></div>
+                    </div>
+            </div>
+        </div>
+
+    </body>
+</html>

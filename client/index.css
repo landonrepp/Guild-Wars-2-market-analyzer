@@ -1,0 +1,83 @@
+#timeTable{
+    grid-area: timeTable;
+    display:none;
+}
+#dualFrequencyTable{
+    grid-area: dualFrequencyTable;
+}
+#buyStatsContainer{
+    grid-area: buyStatsContainer;
+}
+#sellStatsContainer{
+    grid-area: sellStatsContainer;
+}
+#buySellAvg{
+    grid-area: buySellAvg;
+    /* display:none; */
+}
+#currentStats{
+    grid-area: currentStats;
+}
+.graph{
+    height: 230px;
+}
+.itemImg{
+    grid-area:itemImg;
+}
+.itemName{
+    grid-area:itemName;
+}
+.itemDesc{
+    grid-area:itemDesc;
+}
+.itemName{
+    grid-area:itemName;
+    border-bottom: 1px solid;
+}
+
+#itemInfo{
+    grid-area: itemInfo;
+    display:grid;
+    grid-template-columns: 100px repeat(2,33%) min-content;
+    grid-template-rows: min-content;
+    grid-template-areas:
+        "itemImg itemName itemName"
+        "itemImg itemDesc itemDesc"
+        /* ". itemDesc ItemDesc"; */
+}
+#pumpAndDump{
+    grid-area:pumpAndDump;
+    height:250px;
+}
+
+.container{
+    display:grid;
+    grid-template-columns: repeat(4, 25% [col-start]);
+    grid-template-rows: 100px repeat(1,240px) 120px;
+    grid-auto-rows:100px;
+    grid-template-areas:
+        "itemInfo . . ."
+        "buySellAvg buySellAvg dualFrequencyTable dualFrequencyTable"
+        "buyStatsContainer sellStatsContainer currentStats currentStats"
+        ". . pumpAndDump pumpAndDump";
+    /* border: 1px solid; */
+    grid-row-gap: 50px;
+}
+
+@media only screen and (max-device-width:900px), only screen and (max-width: 900px) {
+    .container{
+        display:grid;
+        grid-template-columns: repeat(1, 100% [col-start]);;
+        grid-template-rows: 100px repeat(5,auto);
+        grid-template-areas:
+            "itemInfo"
+            "buySellAvg"
+            "dualFrequencyTable"
+            "buyStatsContainer"
+            "sellStatsContainer"
+            "currentStats"
+            "pumpAndDump";
+        /* border: 1px solid; */
+        grid-row-gap: 50px;
+    }
+}
