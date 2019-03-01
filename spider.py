@@ -1,19 +1,37 @@
-#used to make http/https requests
+import pymysql as pms
 import urllib.request, urllib.error,json,datetime
-from time import gmtime, strftime
-from pymongo import MongoClient
+from time import gmtime, strftime,strftime
 
-client = MongoClient('mongodb://localhost:27017/')
-db = client['testDB']
+
+
+global con
+global cur
+
+def openCon():
+    global con
+    global cur
+
+    con = pms.connect(
+    host="localhost",
+    user="landonrepp",
+    passwd="password",
+    db="gw2"
+    )
+    cur = con.cursor()
+
+def closeCon():
+    global con
+    con.close()
 
 def updater(itemArr,startTime):
+    startTime = strftime("%Y-%m-%d %H:%m:%S",startTime)
+    global con
+    global cur
     #gets page as type byte
     reqStr = "https://api.guildwars2.com/v2/commerce/prices?ids="+str(itemArr)[1:-1].replace(" ","")
     # print(reqStr)
-    buyOrders = []
-    sellOrders = []
 
-    
+        
     while True:
         try:
             response = urllib.request.urlopen(reqStr)
@@ -25,23 +43,12 @@ def updater(itemArr,startTime):
             break
         except Exception as exp:
             print(exp)
-    for i in range(len(strPage)):
-        # for j in range(len(strPage[i]["buys"])):
-        #    strPage[i]["buys"][j]["time"] = startTime
-
-        if len(strPage[i]["buys"])>0:
-            strPage[i]["buys"]["time"] = startTime
-            strPage[i]["buys"]["id"] = strPage[i]["id"]
-            buyOrders.append(strPage[i]["buys"])
-
-        # for j in range(len(strPage[i]["sells"])):
-        #    strPage[i]["sells"][j]["time"] = startTime
-
-        if len(strPage[i]["sells"])>0:
-            strPage[i]["sells"]["time"] = startTime
-            strPage[i]["sells"]["id"] = strPage[i]["id"]
-            sellOrders.append(strPage[i]["sells"])
-    # print(json.dumps(buyOrders, sort_keys= True, indent=4, separators=(',', ': ')))
-    db.buyOrders.insert_many(buyOrders)
-    db.sellOrders.insert_many(sellOrders)
-
+    buyOrders = [(i["id"],i["buys"]["quantity"],i["buys"]["unit_price"],startTime) for i in strPage]
+    sellOrders = [(i["id"],i["sells"]["quantity"],i["sells"]["unit_price"],startTime) for i in strPage]
+    #TTD: PUT ITEMS ID INTO THIS
+    insert_statement = "INSERT INTO tblBuyOrders (itemsID,quantity,unitPrice,time) values (%s,%s,%s,%s)"
+    cur.executemany(insert_statement,buyOrders)
+    con.commit()
+    insert_statement = "INSERT INTO tblSellOrders (itemsID,quantity,unitPrice,time) values (%s,%s,%s,%s)"
+    cur.executemany(insert_statement,sellOrders)
+    con.commit()
