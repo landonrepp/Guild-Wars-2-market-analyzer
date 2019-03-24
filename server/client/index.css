@@ -69,9 +69,8 @@
 
 @media only screen and (max-device-width:900px), only screen and (max-width: 900px) {
     .container{
-        display:grid;
         grid-template-columns: repeat(1, 100% [col-start]);
-        grid-template-rows: 100px repeat(2,auto);
+        grid-template-rows: 100px repeat(3,auto);
         grid-template-areas:
             "itemInfo"
             "buySellAvg"
