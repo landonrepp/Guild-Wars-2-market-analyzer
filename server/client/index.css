@@ -76,9 +76,9 @@
             "itemInfo"
             "buySellAvg"
             "dualFrequencyTable"
-            "buyStatsContainer"
+            /* "buyStatsContainer"
             "sellStatsContainer"
-            "currentStats"
+            "currentStats" */
             "pumpAndDump";
         /* border: 1px solid; */
         grid-row-gap: 50px;
