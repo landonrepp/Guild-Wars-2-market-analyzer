@@ -28,8 +28,9 @@ function movingAvg(arr){
             sum -= arr[i-10];
         }
         sum+= arr[i];
-        avg.push(sum/Math.min(i,10));
+        avg.push(sum/Math.min(i+1,10));
     }
+    return avg
 }
 
 function getUrlVars() {
@@ -174,7 +175,9 @@ function timeTableWithAvg(chart,id){
     for(var i = 1; i<buyArr.length;i++){
         avgArr.push((buyArr[i]+sellArr[i])/2);
     }
-    chart["data"]["columns"].push(avgArr);
+    var newAvg = ["Moving Average"].concat(movingAvg(avgArr.slice(1,avgArr.length-1)))
+    chart["data"]["columns"].push(newAvg);
+    // chart["data"]["columns"].push(avgArr);
     chart["bindto"] = id;
     c3.generate(chart);
     return chart;
