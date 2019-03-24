@@ -1,5 +1,5 @@
 
-String.prototype.replaceAt=function(index, replacement) {
+String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
 }
 Array.prototype.peek = function() {
@@ -147,10 +147,9 @@ function timeTable(arr,ID){
                 type: 'timeseries',
                 tick: {
                     // 2019-03-16 02:28
-                    format: '%Y-%m-%d %H:%M',
-                    rotate: 75,
-                    multiline: false,
-                    values:createTicks(tempArr.slice(1,tempArr.length),6)
+                    format: '%Y-%m-%d',
+                    rotate: 25,
+//                    values:arr[0].slice(1,arr.length)
                 }
             }
         },
@@ -215,6 +214,14 @@ function dualFrequencyTable(arr,id,xAxis1,xAxis2,weighted){
             ],
             type:"area-spline"
         },
+        axis:{
+            x:{
+                tick: {
+    //                multiline: false,
+                    values: createTicks(freq1[0].slice(1,freq1[0].length-1).concat(freq2[0].slice(1,freq2[0].length-1)),6)
+                },
+            }
+        },
         grid:{
             x:{
                 lines:[
@@ -251,12 +258,11 @@ function frequencyTable(arr,id,xAxis){
             },
             axis:{
                 x:{
-                    type:"category",
+                    type:"timeseries",
                     tick:{
-                        rotate:75,
-                        multiline:false
+                        
                     },
-                    height:130
+//                    height:130
                 }
             }
         }
@@ -268,9 +274,11 @@ function frequencyTable(arr,id,xAxis){
 function createTicks(arr,ticks){
     max = Math.max(...arr);
     min = Math.min(...arr);
+    console.log(arr)
+    console.log(`min:${min} max:${max}`);
     tempArr = [];
     for(var i = min;i<=max;i+=(max-min)/6){
-        tempArr.push(i);
+        tempArr.push(Math.floor(i));
     }
     return tempArr;
 }
@@ -298,7 +306,7 @@ $(document).ready(()=>{
             dataObj = response;
 
             dataArr = parseData(response);
-            var tTbl = timeTable(dataArr,"#timeTable");
+            var tTbl = timeTable(dataArr,"#timeTbl");
             timeTableWithAvg(tTbl,"#buySellAvg");
             dualFrequencyTable(dataArr.slice(),"#dualFrequencyTable","Buy orders dist.","Sell orders dist.");
 
