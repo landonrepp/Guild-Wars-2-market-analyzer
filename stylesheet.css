@@ -1,0 +1,14 @@
+.col-md-6{
+	background: red;
+}
+.col-md-3{
+	background: green;
+}
+div{
+	height: 100px;
+}
+#graph{
+	height: 300px;
+	border: 1px solid;
+
+}
