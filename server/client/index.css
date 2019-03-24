@@ -75,7 +75,7 @@
         grid-template-areas:
             "itemInfo"
             "buySellAvg"
-            "dualFrequencyTable"
+            "dualFrequencyTable";
             /* "buyStatsContainer"
             "sellStatsContainer"
             "currentStats"
