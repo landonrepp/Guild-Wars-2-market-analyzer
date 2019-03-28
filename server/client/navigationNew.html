@@ -32,15 +32,15 @@
             
         </div>
         <div class = "lineItem lineItemHeader">
-                <div ng-src={{item.icon}} class = "lineItemInfo lineItemIcon">
+                <div class = "lineItemInfo lineItemIcon">
                 </div>
                 <div class = "lineItemInfo lineItemIcon">
                     <!-- empty div for general processing -->
                 </div>
-                <span class = "lineItemInfo lineItemName">Name</span>
-                <span class = "lineItemInfo lineItemBuys">Buy Price</span>
-                <span class = "lineItemInfo lineItemSells">Sell Price</span>
-                <span class = "lineItemInfo,lineItemProfit">Profit</span>
+                <span class = "lineItemInfo lineItemName">Name <span id = "nameSort"> &#9658;</span></span>
+                <span class = "lineItemInfo lineItemBuys">Buy Price <span id = "nameSort"> &#9658;</span></span>
+                <span class = "lineItemInfo lineItemSells">Sell Price <span id = "nameSort"> &#9658;</span></span>
+                <span class = "lineItemInfo,lineItemProfit">Profit <span id = "nameSort"> &#9658;</span></span>
         </div>
         <div  id = "bottomLines" ng-repeat="item in allItems">
             
