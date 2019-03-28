@@ -36,6 +36,9 @@
     grid-template-rows:50px; 
     grid-template-areas: "lineItemIcon lineItemName lineItemBuys lineItemSells lineItemProfit"
 }
+.lineItem:hover{
+    background-color:#a5a5a5;
+}
 .lineItemHeader{
     background-color: rgb(255, 250, 238);
 }
