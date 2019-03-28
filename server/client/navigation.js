@@ -24,7 +24,7 @@ $(document).ready(()=>{
 		$(".modal").css("display","none");
 	});
 	
-	$(".lineItemHeader .lineItemInfo").click((e)=>{
+	$(".lineItemHeader > .lineItemInfo").click((e)=>{
 		var headerIDS = ["#nameHead","#buyHead","#sellHead","#profitHead"];
 		// var tempStr = $(`${this} .sort`).html();
 		for(var i in headerIDS){
