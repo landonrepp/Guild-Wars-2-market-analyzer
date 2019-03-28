@@ -29,6 +29,7 @@ $(document).ready(()=>{
 		var headerIDS = ["#nameHead","#buyHead","#sellHead","#profitHead"];
 		// var tempStr = $(`${this} .sort`).html();
 		for(var i in headerIDS){
+			alert(`${i} > .sort`);
 			$(`${i} > .sort`).html("&#9658;");
 		}
 
