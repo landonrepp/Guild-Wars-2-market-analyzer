@@ -25,11 +25,10 @@ $(document).ready(()=>{
 	});
 	
 	$(".lineItemHeader > .lineItemInfo").click((e)=>{
-		alert(this);
 		var headerIDS = ["#nameHead","#buyHead","#sellHead","#profitHead"];
-		var tempStr = $(`${this} > .sort`).html();
+		var tempStr = $(`${this}.this.attr("id") > .sort`).html();
+		alert(tempStr);
 		for(var i in headerIDS){
-			// alert(`${headerIDS[i]} > .sort`);
 			$(`${headerIDS[i]} > .sort`).html("&#9658;");
 		}
 
