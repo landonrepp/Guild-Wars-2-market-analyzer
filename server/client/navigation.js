@@ -24,10 +24,10 @@ $(document).ready(()=>{
 		$(".modal").css("display","none");
 	});
 	
-	$(".lineItemHeader > .lineItemInfo > .sort").click((e)=>{
+	$(".lineItemHeader > .lineItemInfo").click((e)=>{
 		var headerIDS = ["#nameHead","#buyHead","#sellHead","#profitHead"];
 		var tempStr = $(`${$(this).attr("id")} > .sort`).html();
-		alert(tempStr);
+		alert($(this).attr("id"));
 		for(var i in headerIDS){
 			$(`${headerIDS[i]} > .sort`).html("&#9658;");
 		}
