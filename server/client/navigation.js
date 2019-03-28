@@ -13,6 +13,7 @@ $(document).ready(()=>{
 			});
 			$scope.allItems = result;
 			$scope.$digest();
+			$(".spinner").css("display","none");
 			$scope.openModal = (id) =>{
 				$(".modal-iframe").attr("src",`http://landonrepp.com/client/index.html?id=${id}`);
 				$(".modal").css("display","block");
