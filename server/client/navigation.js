@@ -30,7 +30,16 @@ $(document).ready(()=>{
 		for(var i in headerIDS){
 			$(`${headerIDS[i]} > .sort`).html("&#9658;");
 		}
-
+		if(tempStr == "&#9658;"){
+			tempStr = "&#9660;";
+		}
+		else if(tempStr == "&#9660;"){
+			tempStr = "&#9650;"
+		}
+		else{
+			tempStr = "&#9660;";
+		}
+		$(`${$(this).attr("id")} > .sort`).html() = tempStr;
 	});
 
 	function inititalizeBottomItems(){
