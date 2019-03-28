@@ -27,7 +27,7 @@ $(document).ready(()=>{
 	$(".lineItemHeader > .lineItemInfo").click((e)=>{
 		var headerIDS = ["#nameHead","#buyHead","#sellHead","#profitHead"];
 		var tempStr = $(`${$(this).attr("id")} > .sort`).html();
-		alert($(this).attr($(this).attr("id")));
+		alert($(this).attr());
 		for(var i in headerIDS){
 			$(`${headerIDS[i]} > .sort`).html("&#9658;");
 		}
