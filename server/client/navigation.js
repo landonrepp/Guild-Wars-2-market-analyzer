@@ -4,10 +4,9 @@ $(document).ready(()=>{
     angular
 	.module('itemLists', [])
 	.controller('itemListsController', ['$scope', function($scope) {
-
 		inititalizeBottomItems().then((result)=>{
 			console.log("initializing bottom line items...")
-			// console.log(result[0])
+
 			result.sort((a,b)=>{
 				return(a.profit>b.profit)? -1: (a.profit<b.profit) ? 1: 0;
 			});
@@ -25,6 +24,15 @@ $(document).ready(()=>{
 		$(".modal").css("display","none");
 	});
 	
+	$(".lineItemHeader .lineItemInfo").click((e)=>{
+		var headerIDS = ["#nameHead","#buyHead","#sellHead","#profitHead"];
+		var tempStr = $(`${this} .sort`).html();
+		for(var i in headerIDS){
+			$(`${i} .sort`).html("&#9658;");
+		}
+		
+	});
+
 	function inititalizeBottomItems(){
 		return new Promise((resolve,reject)=>{
 			$.ajax({
