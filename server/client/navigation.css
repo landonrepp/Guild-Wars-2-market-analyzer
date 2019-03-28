@@ -92,5 +92,6 @@
   }
   .headerHeight{
     height:100px;
-    margin:25px;
+    margin-bottom:25px;
+    padding-bottom:25px;
   }
