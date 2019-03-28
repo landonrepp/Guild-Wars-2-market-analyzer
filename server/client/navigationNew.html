@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="itemLists">
+<head>
+    <title>Market watch</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="c3.css">
+    <link rel="stylesheet" type="text/css" href="navigation.css">
+    <link rel = "stylesheet" type = "text/css" href = "spinner.css">
+    <script type = 'text/javascript' src = 'jquery.js'></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type = 'text/javascript' src = 'c3.js'></script>
+    <script type = 'text/javascript' src = 'navigation.js'></script>
+    <script type = 'text/javascript' src = 'https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js'></script>
+    <script type = "text/javascript" src = "fuzzyset.js"></script>
+
+
+</head>
+<body>
+    <div class = "headerHeight" id = "header">
+
+    </div>
+    <div class = "headerHeight" id = "headerWhitespace"><!--whitespace--></div>
+
+    <div class = "itemContainer" ng-controller="itemListsController">
+        <div ng-repeat="item in priority" id = "topLines">
+            <span class = "lineItemInfo">{{item.name}}</span>
+            <span class = "lineItemInfo">{{item.buys.unitPrice - item.sells.unitPrice}}</span>
+            <span class = "lineItemInfo">{{item.name}}</span>
+            
+        </div>
+        <div class = "lineItem lineItemHeader">
+                <div ng-src={{item.icon}} class = "lineItemInfo lineItemIcon">
+                </div>
+                <div class = "lineItemInfo lineItemIcon">
+                    <!-- empty div for general processing -->
+                </div>
+                <span class = "lineItemInfo lineItemName">Name</span>
+                <span class = "lineItemInfo lineItemBuys">Buy Price</span>
+                <span class = "lineItemInfo lineItemSells">Sell Price</span>
+                <span class = "lineItemInfo,lineItemProfit">Profit</span>
+        </div>
+        <div  id = "bottomLines" ng-repeat="item in allItems">
+            
+            <div class = "lineItem" ng-click="openModal(item.id)">
+                <img ng-src={{item.icon}} class = "lineItemInfo lineItemIcon">
+                <span class = "lineItemInfo lineItemName" >{{item.name}}</span>
+                <span class = "lineItemInfo lineItemBuys"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{item.buys.unit_price}}</span>
+                <span class = "lineItemInfo lineItemSells"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{item.sells.unit_price}}</span>
+                <span class = "lineItemInfo lineItemProfit"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{item.profit}}</span>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <iframe class = "modal-iframe"></iframe>
+        </div>
+    </div>
+    <div class="spinner" align="center">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+    </div>
+</body>
+</html>
