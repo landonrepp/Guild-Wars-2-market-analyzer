@@ -39,7 +39,7 @@ $(document).ready(()=>{
 		else{
 			tempStr = "&#9660;";
 		}
-		$(`${$(this).attr("id")} > .sort`).html() = tempStr;
+		$(`${$(this).attr("id")} > .sort`).html(tempStr);
 	});
 
 	function inititalizeBottomItems(){
