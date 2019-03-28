@@ -26,11 +26,11 @@ $(document).ready(()=>{
 	
 	$(".lineItemHeader .lineItemInfo").click((e)=>{
 		var headerIDS = ["#nameHead","#buyHead","#sellHead","#profitHead"];
-		var tempStr = $(`${this} .sort`).html();
+		// var tempStr = $(`${this} .sort`).html();
 		for(var i in headerIDS){
 			$(`${i} .sort`).html("&#9658;");
 		}
-		
+
 	});
 
 	function inititalizeBottomItems(){
