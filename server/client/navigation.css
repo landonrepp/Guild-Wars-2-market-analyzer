@@ -88,7 +88,7 @@
   #header{
       width:100%;
       position: fixed;
-      background-color: aqua;
+      background-color: rgb(201, 152, 152);
   }
   .headerHeight{
     height:100px;
