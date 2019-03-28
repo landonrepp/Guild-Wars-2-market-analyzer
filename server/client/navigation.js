@@ -41,7 +41,9 @@ $(document).ready(()=>{
 			tempStr = "&#9660;";
 		}
 		$(`${$(this).attr("id")} > .sort`).html(tempStr);
-	});
+	}).children().on("click", function(e) {
+		e.stopPropagation();
+	});;
 
 	function inititalizeBottomItems(){
 		return new Promise((resolve,reject)=>{
