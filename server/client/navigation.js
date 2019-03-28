@@ -30,7 +30,7 @@ $(document).ready(()=>{
 		// var tempStr = $(`${this} .sort`).html();
 		for(var i in headerIDS){
 			alert(`${headerIDS[i]} > .sort`);
-			$(`${i} > .sort`).html("&#9658;");
+			$(`${i} > .sort`).html("feawoih");
 		}
 
 	});
