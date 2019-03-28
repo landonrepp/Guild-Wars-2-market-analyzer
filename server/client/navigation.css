@@ -1,6 +1,6 @@
 .lineItem{
     width:100%;
-    border-bottom:1px solid;
+    border-top:1px solid;
     padding-bottom:10px;
 }
 #topLines #bottomLines{
