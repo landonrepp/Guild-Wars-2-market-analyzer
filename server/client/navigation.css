@@ -92,6 +92,7 @@
   }
   .headerHeight{
     height:100px;
-    margin-bottom:25px;
-    padding-bottom:25px;
+  }
+  #headerWhitespace{
+      padding-bottom: 10px;
   }
