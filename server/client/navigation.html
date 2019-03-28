@@ -44,9 +44,9 @@
         </div>
         <div  id = "bottomLines" ng-repeat="item in allItems">
             
-            <div class = "lineItem">
+            <div class = "lineItem" ng-click="openModal(item.id)">
                 <img ng-src={{item.icon}} class = "lineItemInfo lineItemIcon">
-                <span class = "lineItemInfo lineItemName" ng-click="openModal(item.id)">{{item.name}}</span>
+                <span class = "lineItemInfo lineItemName" >{{item.name}}</span>
                 <span class = "lineItemInfo lineItemBuys"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{item.buys.unit_price}}</span>
                 <span class = "lineItemInfo lineItemSells"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{item.sells.unit_price}}</span>
                 <span class = "lineItemInfo lineItemProfit"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{item.profit}}</span>
