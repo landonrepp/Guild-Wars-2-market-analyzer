@@ -25,12 +25,12 @@ $(document).ready(()=>{
 	});
 	
 	$(".lineItemHeader > .lineItemInfo").click((e)=>{
-		// alert("test");
+		alert(this);
 		var headerIDS = ["#nameHead","#buyHead","#sellHead","#profitHead"];
-		// var tempStr = $(`${this} .sort`).html();
+		var tempStr = $(`${this} > .sort`).html();
 		for(var i in headerIDS){
-			alert(`${headerIDS[i]} > .sort`);
-			$(`${i} > .sort`).html("feawoih");
+			// alert(`${headerIDS[i]} > .sort`);
+			$(`${headerIDS[i]} > .sort`).html("&#9658;");
 		}
 
 	});
