@@ -31,7 +31,7 @@ def updater(itemArr,startTime):
     reqStr = "https://api.guildwars2.com/v2/commerce/prices?ids="+str(itemArr)[1:-1].replace(" ","")
     # print(reqStr)
 
-        
+
     while True:
         try:
             response = urllib.request.urlopen(reqStr)
@@ -43,12 +43,15 @@ def updater(itemArr,startTime):
             break
         except Exception as exp:
             print(exp)
-    buyOrders = [(i["id"],i["buys"]["quantity"],i["buys"]["unit_price"],startTime) for i in strPage]
-    sellOrders = [(i["id"],i["sells"]["quantity"],i["sells"]["unit_price"],startTime) for i in strPage]
-    #TTD: PUT ITEMS ID INTO THIS
-    insert_statement = "INSERT INTO tblBuyOrders (itemsID,quantity,unitPrice,time) values (%s,%s,%s,%s)"
-    cur.executemany(insert_statement,buyOrders)
-    con.commit()
-    insert_statement = "INSERT INTO tblSellOrders (itemsID,quantity,unitPrice,time) values (%s,%s,%s,%s)"
-    cur.executemany(insert_statement,sellOrders)
-    con.commit()
+    try:
+        buyOrders = [(i["id"],i["buys"]["quantity"],i["buys"]["unit_price"],startTime) for i in strPage]
+        sellOrders = [(i["id"],i["sells"]["quantity"],i["sells"]["unit_price"],startTime) for i in strPage]
+        #TTD: PUT ITEMS ID INTO THIS
+        insert_statement = "INSERT INTO tblBuyOrders (itemsID,quantity,unitPrice,time) values (%s,%s,%s,%s)"
+        cur.executemany(insert_statement,buyOrders)
+        con.commit()
+        insert_statement = "INSERT INTO tblSellOrders (itemsID,quantity,unitPrice,time) values (%s,%s,%s,%s)"
+        cur.executemany(insert_statement,sellOrders)
+        con.commit()
+    except Exception as exp:
+        print(exp)
