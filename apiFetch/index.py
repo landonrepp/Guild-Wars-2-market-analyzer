@@ -15,8 +15,10 @@ while True:
     tTime = time.gmtime()
     strtTime = time.time()
     for item in items:
-        # print("from",item[0],"to",item[-1])
-        spider.updater(item,tTime)
+        print("from",item[0],"to",item[-1])
+        while not spider.updater(item,tTime):
+            print("error")
+            pass
 
     spider.closeCon()
     time.sleep(int(max(0,1200-max((time.time()-strtTime),0))))
