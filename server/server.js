@@ -3,12 +3,13 @@ const express = require("express");
 const fs = require('fs');
 var mysql = require('mysql');
 // const http = require("http");
+var cors = require('cors')
 const app = express();
 const port = 80;
 const credentials = {
     host: 'localhost',
     user: 'landonrepp',
-    password: 'Ilike0909',
+    password: 'password',
     database: 'gw2'
 }
 
