@@ -4,7 +4,7 @@ const fs = require('fs');
 var mysql = require('mysql');
 // const http = require("http");
 var cors = require('cors')
-const app = express();
+const app = express(cors());
 const port = 80;
 const credentials = {
     host: 'localhost',
