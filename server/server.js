@@ -4,7 +4,7 @@ const fs = require('fs');
 var mysql = require('mysql');
 // const http = require("http");
 var cors = require('cors')
-const app = express(cors());
+const app = express();
 const port = 80;
 const credentials = {
     host: 'localhost',
@@ -12,7 +12,7 @@ const credentials = {
     password: 'password',
     database: 'gw2'
 }
-
+app.use(cors());
 function handleErr(err){
     console.log(err);
     var pool = mysql.createPool(credentials);
