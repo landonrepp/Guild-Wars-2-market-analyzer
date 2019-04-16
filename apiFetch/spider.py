@@ -14,7 +14,7 @@ def openCon():
     con = pms.connect(
     host="localhost",
     user="landonrepp",
-    passwd="Ilike0909",
+    passwd="password",
     db="gw2"
     )
     cur = con.cursor()
