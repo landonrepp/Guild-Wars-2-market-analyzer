@@ -4,6 +4,7 @@ const fs = require('fs');
 var mysql = require('mysql');
 // const http = require("http");
 var cors = require('cors')
+const url = "http://www.landonrepp.com/client/index.html";
 const app = express();
 const port = 80;
 const credentials = {
@@ -52,7 +53,7 @@ function getHotItems(){
 
 app.get('/',(req,res)=>{
     // navigation redirect
-    res.end("<html><body><script>window.location.replace('http://www.landonrepp.com/client/navigation.html')</script><body></html>")
+    res.end(`<html><body><script>window.location.replace('${url}')</script><body></html>`)
 });
 
 app.get('/hotItems',(req,res)=>{
@@ -63,7 +64,7 @@ app.get('/hotItems',(req,res)=>{
     });
 });
 
-app.get('/client/:path?id=:id',(req,res)=>{
+app.get('/:path?id=:id',(req,res)=>{
     console.log(req.url);
 
     fs.readFile('./client/'+req.params['path'], 'utf8', function(err, contents) {
@@ -71,7 +72,7 @@ app.get('/client/:path?id=:id',(req,res)=>{
     });
 });
 
-app.get('/client/:path',(req,res)=>{
+app.get('/:path',(req,res)=>{
     console.log(req.url);
 
     fs.readFile('./client/'+req.params['path'], 'utf8', function(err, contents) {
