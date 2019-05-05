@@ -63,6 +63,14 @@ app.get('/hotItems',(req,res)=>{
         })));
     });
 });
+app.get('/calc/:itemNumber',(req,res)=>{
+    console.log(req.url);
+    console.log(req.params['itemNumber']);
+    getMarketData(req.params['itemNumber']).then((values)=>{
+        res.end(JSON.stringify(values[0]));
+    });
+});
+
 
 app.get('/:path?id=:id',(req,res)=>{
     console.log(req.url);
@@ -77,15 +85,6 @@ app.get('/:path',(req,res)=>{
 
     fs.readFile('./client/'+req.params['path'], 'utf8', function(err, contents) {
         res.end(contents);
-    });
-});
-
-
-app.get('/calc/:itemNumber',(req,res)=>{
-    console.log(req.url);
-    console.log(req.params['itemNumber']);
-    getMarketData(req.params['itemNumber']).then((values)=>{
-        res.end(JSON.stringify(values[0]));
     });
 });
 
