@@ -6,12 +6,17 @@ from tensorflow.keras.layers import Dense, Dropout, LSTM
 
 csv = pd.read_csv("buyOrdersT.csv").fillna(0)
 # drop the top layer to have 1062 rows, which is evenly divisibly by 177
-csv.drop(csv.index[0],inplace=True)
+temp = csv.loc[1062,]
+
+csv.drop(csv.index[1062],inplace=True)
 
 # split into 177 equal subarrays for training data
-x_train = np.dstack(np.split(csv,6,axis=0))
-# get every 6th row starting at the 7th row for training results
-y_train = np.array([x_train[i][:][0] for i in range(len(x_train))])
+x_train = np.transpose(np.dstack(np.split(csv.values,6,axis=0)),(0,2,1))
+
+y_train = [np.array(i[0]) for i in x_train][1:]
+y_train.append(temp)
+y_train=np.transpose(np.dstack(y_train),(2,0,1))
+# y_train.reshape(y_train.shape[0],1,y_train.shape[1])
 
 print(x_train.shape)
 print(y_train.shape)
@@ -21,9 +26,12 @@ x_test = x_train[157:]
 x_train= x_train[:157]
 y_test = y_train[157:]
 y_train= y_train[:157]
+print(x_test.shape)
+print(y_test.shape)
+
 
 model = Sequential()
-model.add(LSTM(128, input_shape=(x_train.shape[1:]), activation='relu', return_sequences=True))
+model.add(LSTM(128, input_shape=x_train.shape[1:], activation='relu', return_sequences=True))
 model.add(Dropout(0.2))
 
 model.add(LSTM(128, activation='relu'))
