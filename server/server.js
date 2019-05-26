@@ -76,7 +76,7 @@ function callSp(sp,checkIfExists = true){
                         reject(err);
                     }
                     else{
-                        console.log("no stored procedur of that name");
+                        console.log(result);
                         resolve(result);
                     }
                 });
