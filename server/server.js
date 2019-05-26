@@ -70,9 +70,10 @@ function getHotItems(){
 }
 function callSp(sp,checkIfExists = true){
     return new Promise((resolve,reject)=>{
+        console.log(sp);
         if(storedProcedureList.indexOf(sp)==-1 && checkIfExists){
-            reject("no stored procedur of that name");
-            console.log("no stored procedur of that name");
+            reject("no stored procedure of that name");
+            console.log("no stored procedure of that name");
         }
         else{
             pool.getConnection((err,con)=>{
