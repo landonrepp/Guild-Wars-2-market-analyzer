@@ -26,16 +26,19 @@ function handleErr(err){
 }
 
 var pool = mysql.createPool(credentials);
+refreshDBLink();
 
-callSp('getStoredProcedureList',false).then(result=>{
-    let li = [];
-    console.log(result[0]);
-    for(i in result[0]){
-        console.log(result[0][i].name);
-        li.push(result[0][i]["name"]);
-    }
-});
 
+function refreshDBLink(){
+    callSp('getStoredProcedureList',false).then(result=>{
+        let li = [];
+        console.log(result[0]);
+        for(i in result[0]){
+            li.push(result[0][i].name);
+        }
+        storedProcedureList = li;
+    });
+}
 function getMarketData(intID){
     return new Promise((resolve,reject)=>{
         pool.getConnection((err,con)=>{
