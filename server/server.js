@@ -81,7 +81,7 @@ function callSp(sp,checkIfExists = true){
                 con.query(`CALL ${sp}()`,(err,result,fields)=>{
                     if(err) {
                         handleErr();
-                        // reject(JSON.stringify(err));
+                        reject(JSON.stringify(err));
                     }
                     else{
                         resolve(result);
@@ -133,6 +133,9 @@ app.get('/sql/sp/:sp',(req,res)=>{
     let sp=req.params['sp'];
     callSp(sp).then(result=>{
         res.end(result);
+    })
+    .catch((err)=>{
+        res.end(err);
     });
 });
 
