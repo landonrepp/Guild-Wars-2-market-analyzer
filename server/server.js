@@ -113,6 +113,10 @@ app.get('/calc/:itemNumber',(req,res)=>{
     });
 });
 
+app.get("/refreshDBLink",(req,res)=>{
+    refreshDBLink();
+    res.end();
+});
 
 app.get('/:path?id=:id',(req,res)=>{
     console.log(req.url);
