@@ -65,6 +65,7 @@ function callSp(sp,checkIfExists = true){
     return new Promise((resolve,reject)=>{
         if(storedProcedureList.indexOf(sp)==-1 && checkIfExists){
             reject("no stored procedur of that name");
+            console.log("no stored procedur of that name");
         }
         else{
             pool.getConnection((err,con)=>{
@@ -74,8 +75,10 @@ function callSp(sp,checkIfExists = true){
                         handleErr();
                         reject(err);
                     }
-                    else
+                    else{
+                        console.log("no stored procedur of that name");
                         resolve(result);
+                    }
                 });
                 con.release();
             });
