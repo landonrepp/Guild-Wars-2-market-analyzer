@@ -37,6 +37,7 @@ function refreshDBLink(){
             li.push(result[0][i].name);
         }
         storedProcedureList = li;
+        console.log(storedProcedureList);
     });
 }
 function getMarketData(intID){
