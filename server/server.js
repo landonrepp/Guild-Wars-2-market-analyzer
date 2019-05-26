@@ -29,9 +29,9 @@ var pool = mysql.createPool(credentials);
 
 callSp('getStoredProcedureList',false).then(result=>{
     let li = [];
-    for(i in result){
-        li.push(result[i][name])
-    }
+    // for(i in result){
+    //     li.push(result[i][name]);
+    // }
     console.log(storedProcedureList);
 });
 
