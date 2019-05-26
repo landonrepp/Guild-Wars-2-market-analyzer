@@ -29,6 +29,7 @@ var pool = mysql.createPool(credentials);
 
 callSp('getStoredProcedureList',false).then(result=>{
     storedProcedureList = result["name"];
+    console.log(storedProcedureList);
 });
 
 function getMarketData(intID){
