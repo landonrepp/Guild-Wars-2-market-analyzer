@@ -130,8 +130,8 @@ app.get('/:path',(req,res)=>{
     });
 });
 app.get('/sql/sp/:sp',(req,res)=>{
-    let sp=req.sq;
-    console.log(storedProcedureList);
+    let sp=req.sp;
+    console.log(req.sp);
     callSp(sp).then(result=>{
         res.end(result);
     });
