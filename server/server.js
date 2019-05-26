@@ -29,6 +29,7 @@ var pool = mysql.createPool(credentials);
 
 callSp('getStoredProcedureList',false).then(result=>{
     let li = [];
+    console.log(result[0])
     for(i in result[0]){
         li.push(result[0][i]["name"]);
     }
@@ -79,7 +80,6 @@ function callSp(sp,checkIfExists = true){
                         reject(err);
                     }
                     else{
-                        console.log(result);
                         resolve(result);
                     }
                 });
