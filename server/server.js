@@ -28,7 +28,10 @@ function handleErr(err){
 var pool = mysql.createPool(credentials);
 
 callSp('getStoredProcedureList',false).then(result=>{
-    storedProcedureList = result["name"];
+    let li = [];
+    for(i in result){
+        li.push(result[i][name])
+    }
     console.log(storedProcedureList);
 });
 
