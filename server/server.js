@@ -81,7 +81,7 @@ function callSp(sp,checkIfExists = true){
                 con.query(`CALL ${sp}()`,(err,result,fields)=>{
                     if(err) {
                         handleErr();
-                        reject(err);
+                        // reject(JSON.stringify(err));
                     }
                     else{
                         resolve(result);
