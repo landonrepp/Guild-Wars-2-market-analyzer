@@ -7,12 +7,18 @@ var cors = require('cors')
 const baseUrl = "http://www.landonrepp.com/index.html";
 const app = express();
 const port = 80;
+// initialize storedProcedureList
+let storedProcedureList = [];
+
 const credentials = {
     host: 'localhost',
     user: 'landonrepp',
     password: 'password',
     database: 'gw2'
 }
+
+
+
 app.use(cors());
 function handleErr(err){
     console.log(err);
@@ -20,6 +26,8 @@ function handleErr(err){
 }
 
 var pool = mysql.createPool(credentials);
+
+storedProcedureList = callSp('getStoredProcedureList',false);
 
 function getMarketData(intID){
     return new Promise((resolve,reject)=>{
@@ -48,6 +56,26 @@ function getHotItems(){
             });
             con.release();
         });
+    });
+}
+function callSp(sp,checkIfExists = true){
+    return new Promise((resolve,reject)=>{
+        if(storedProcedureList.indexOf(sp)==-1 && checkIfExists){
+            reject("no stored procedur of that name");
+        }
+        else{
+            pool.getConnection((err,con)=>{
+                con.query(`CALL ${sp}()`,(err,result,fields)=>{
+                    if(err) {
+                        handleErr();
+                        reject(err);
+                    }
+                    else
+                        resolve(result);
+                });
+                con.release();
+            });
+        }
     });
 }
 
@@ -86,6 +114,10 @@ app.get('/:path',(req,res)=>{
     fs.readFile('./client/'+req.params['path'], 'utf8', function(err, contents) {
         res.end(contents);
     });
+});
+app.get('/sql/sp/:sp',(req,res)=>{
+    let sp=req.sq;
+
 });
 
 
