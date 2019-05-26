@@ -65,15 +65,16 @@ function callSp(sp,checkIfExists = true){
         }
         else{
             pool.getConnection((err,con)=>{
-                con.query(`CALL ${sp}()`,(err,result,fields)=>{
-                    if(err) {
-                        handleErr();
-                        reject(err);
-                    }
-                    else
-                        resolve(result);
-                });
-                con.release();
+                console.log(`CALL ${sp}()`);
+                // con.query(`CALL ${sp}()`,(err,result,fields)=>{
+                //     if(err) {
+                //         handleErr();
+                //         reject(err);
+                //     }
+                //     else
+                //         resolve(result);
+                // });
+                // con.release();
             });
         }
     });
