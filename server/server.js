@@ -117,7 +117,9 @@ app.get('/:path',(req,res)=>{
 });
 app.get('/sql/sp/:sp',(req,res)=>{
     let sp=req.sq;
-
+    callSp(sp).then(result=>{
+        res.end(result);
+    })
 });
 
 
