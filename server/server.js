@@ -79,7 +79,6 @@ function callSp(sp,checkIfExists = true){
             pool.getConnection((err,con)=>{
                 console.log(`CALL ${sp}()`);
                 con.query(`CALL ${sp}()`,(err,result,fields)=>{
-                    console.log(result);
                     if(err) {
                         handleErr();
                         reject(JSON.stringify(err));
@@ -133,7 +132,7 @@ app.get('/:path',(req,res)=>{
 app.get('/sql/sp/:sp',(req,res)=>{
     let sp=req.params['sp'];
     callSp(sp).then(result=>{
-        res.end(result);
+        res.end(JSON.stringify(result[0]));
     })
     .catch((err)=>{
         res.end(err);
