@@ -79,6 +79,7 @@ function callSp(sp,checkIfExists = true){
             pool.getConnection((err,con)=>{
                 console.log(`CALL ${sp}()`);
                 con.query(`CALL ${sp}()`,(err,result,fields)=>{
+                    console.log(result);
                     if(err) {
                         handleErr();
                         reject(JSON.stringify(err));
