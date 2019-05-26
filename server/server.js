@@ -27,7 +27,9 @@ function handleErr(err){
 
 var pool = mysql.createPool(credentials);
 
-storedProcedureList = callSp('getStoredProcedureList',false);
+callSp('getStoredProcedureList',false).then(result=>{
+    storedProcedureList = result["name"];
+});
 
 function getMarketData(intID){
     return new Promise((resolve,reject)=>{
@@ -66,15 +68,15 @@ function callSp(sp,checkIfExists = true){
         else{
             pool.getConnection((err,con)=>{
                 console.log(`CALL ${sp}()`);
-                // con.query(`CALL ${sp}()`,(err,result,fields)=>{
-                //     if(err) {
-                //         handleErr();
-                //         reject(err);
-                //     }
-                //     else
-                //         resolve(result);
-                // });
-                // con.release();
+                con.query(`CALL ${sp}()`,(err,result,fields)=>{
+                    if(err) {
+                        handleErr();
+                        reject(err);
+                    }
+                    else
+                        resolve(result);
+                });
+                con.release();
             });
         }
     });
