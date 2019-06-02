@@ -134,7 +134,7 @@ app.get('/:path',(req,res)=>{
         res.end(contents);
     });
 });
-app.post('/sql/spget/:sp',(req,res)=>{
+app.post('/sql/sppost/:sp',(req,res)=>{
     let sp=req.params['sp'];
     console.log(req);
     callSp(sp).then(result=>{
@@ -144,7 +144,7 @@ app.post('/sql/spget/:sp',(req,res)=>{
         res.end(err);
     });
 });
-app.get('/sql/sppost/:sp',(req,res)=>{
+app.get('/sql/spget/:sp',(req,res)=>{
     callSp(sp).then(result=>{
         res.end(JSON.stringify(result[0]));
     })
