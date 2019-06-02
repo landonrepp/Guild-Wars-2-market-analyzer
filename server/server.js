@@ -84,10 +84,10 @@ function callSp(sp,checkIfExists = true,params=null){
             strParams = "";
             for(i in params){
                 if (typeof(params[i])== "number"){
-                    strParams += `@${i}=${params[i]},`
+                    strParams += `${params[i]},`
                 }
                 else{
-                    strParams += `@${i}='${params[i]}',`
+                    strParams += `'${params[i]}',`
                 }
             }
             if(strParams.length>0){
