@@ -7,6 +7,7 @@ var cors = require('cors')
 const baseUrl = "http://www.landonrepp.com/index.html";
 const app = express();
 const port = 80;
+const bodyParser = require('body-parser');
 // initialize storedProcedureList
 let storedProcedureList = [];
 
@@ -20,6 +21,9 @@ const credentials = {
 
 
 app.use(cors());
+app.use(bodyParser.json()); // this will parse Content-Type: application/json 
+app.use(bodyParser.urlencoded({ extended: true })); // this will parse Content-Type:  application/x-www-form-urlencoded
+
 function handleErr(err){
     console.log(err);
     var pool = mysql.createPool(credentials);
