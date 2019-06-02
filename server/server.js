@@ -153,14 +153,13 @@ app.get('/:path',(req,res)=>{
 });
 app.route('/sql/sppost/:sp').post((req,res)=>{
     let sp=req.params['sp'];
-    res.end(JSON.stringify(req.body));
 
-    // callSp(sp).then(result=>{
-    //     res.end(JSON.stringify(result[0]));
-    // })
-    // .catch((err)=>{
-    //     res.end(err);
-    // });
+    callSp(sp,true,params=req.body).then(result=>{
+        res.end(JSON.stringify(result[0]));
+    })
+    .catch((err)=>{
+        res.end(err);
+    });
 });
 app.get('/sql/spget/:sp',(req,res)=>{
     let sp=req.params['sp'];
