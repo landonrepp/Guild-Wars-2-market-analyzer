@@ -134,7 +134,7 @@ app.get('/:path',(req,res)=>{
         res.end(contents);
     });
 });
-app.post('/sql/sppost/:sp',(req,res)=>{
+app.route('/sql/sppost/:sp').post((req,res)=>{
     let sp=req.params['sp'];
     console.log(req);
     callSp(sp).then(result=>{
