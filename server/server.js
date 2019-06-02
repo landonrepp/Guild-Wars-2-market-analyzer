@@ -145,6 +145,7 @@ app.post('/sql/sppost/:sp',(req,res)=>{
     });
 });
 app.get('/sql/spget/:sp',(req,res)=>{
+    let sp=req.params['sp'];
     callSp(sp).then(result=>{
         res.end(JSON.stringify(result[0]));
     })
