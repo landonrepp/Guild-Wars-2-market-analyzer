@@ -82,7 +82,6 @@ function callSp(sp,checkIfExists = true,params=null){
         }
         else{
             strParams = "";
-            params = JSON.parse(params);
             for(i in params){
                 if (typeof(params[i])== "number"){
                     strParams += `@${i}=${params[i]},`
