@@ -144,6 +144,14 @@ app.post('/sql/sp/:sp',(req,res)=>{
         res.end(err);
     });
 });
+app.get('/sql/sp/:sp',(req,res)=>{
+    callSp(sp).then(result=>{
+        res.end(JSON.stringify(result[0]));
+    })
+    .catch((err)=>{
+        res.end(err);
+    });
+});
 
 
 app.listen(port,()=>{
