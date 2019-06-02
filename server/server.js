@@ -6,7 +6,7 @@ var mysql = require('mysql');
 var cors = require('cors')
 const baseUrl = "http://www.landonrepp.com/index.html";
 const app = express();
-const port = 8000;
+const port = 80;
 // initialize storedProcedureList
 let storedProcedureList = [];
 
