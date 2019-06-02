@@ -77,9 +77,22 @@ function callSp(sp,checkIfExists = true,params=null){
             console.log("no stored procedure of that name");
         }
         else{
+            strParams = "";
+            params = JSON.parse(params);
+            for(i in params){
+                if (typeof(params[i])== "number"){
+                    strParams += `@${i}=${params[i]},`
+                }
+                else{
+                    strParams += `@${i}='${params[i]},'`
+                }
+            }
+            if(strParams.length>0){
+                strParams = strParams.substring(0,strParams.length-1)
+            }
             pool.getConnection((err,con)=>{
-                console.log(`CALL ${sp}()`);
-                con.query(`CALL ${sp}()`,(err,result,fields)=>{
+                console.log(`CALL ${sp}(${strParams})`);
+                con.query(`CALL ${sp}(${strParams})`,(err,result,fields)=>{
                     if(err) {
                         handleErr();
                         reject(JSON.stringify(err));
