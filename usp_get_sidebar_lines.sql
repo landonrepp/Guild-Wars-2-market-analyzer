@@ -1,5 +1,5 @@
 delimiter //
-CREATE PROCEDURE getSidebarLines()
+CREATE PROCEDURE getSidebarLines(IN searchkey VARCHAR(255))
 BEGIN
     select itm.*,
     buy.quantity as 'buyQuantity',
@@ -17,6 +17,11 @@ BEGIN
     sell.time = (
         select max(sell2.time) 
         from tblSellOrders sell2 
-        where itemsID = 72);
+        where itemsID = 72)
+    AND
+    (   
+        itm.name like CONCAT('%',IFNULL(searchkey,''),'%')
+    )
+    limit 100;
 END//
 delimiter ;

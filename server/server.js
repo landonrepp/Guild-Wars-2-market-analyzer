@@ -6,7 +6,7 @@ var mysql = require('mysql');
 var cors = require('cors')
 const baseUrl = "http://www.landonrepp.com/index.html";
 const app = express();
-const port = 80;
+const port = 8000;
 // initialize storedProcedureList
 let storedProcedureList = [];
 
@@ -69,7 +69,7 @@ function getHotItems(){
         });
     });
 }
-function callSp(sp,checkIfExists = true){
+function callSp(sp,checkIfExists = true,params=null){
     return new Promise((resolve,reject)=>{
         console.log(sp);
         if(storedProcedureList.indexOf(sp)==-1 && checkIfExists){
@@ -134,8 +134,9 @@ app.get('/:path',(req,res)=>{
         res.end(contents);
     });
 });
-app.get('/sql/sp/:sp',(req,res)=>{
+app.post('/sql/sp/:sp',(req,res)=>{
     let sp=req.params['sp'];
+    console.log(req);
     callSp(sp).then(result=>{
         res.end(JSON.stringify(result[0]));
     })
