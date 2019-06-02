@@ -87,7 +87,7 @@ function callSp(sp,checkIfExists = true,params=null){
                     strParams += `@${i}=${params[i]},`
                 }
                 else{
-                    strParams += `@${i}='${params[i]},'`
+                    strParams += `@${i}='${params[i]}',`
                 }
             }
             if(strParams.length>0){
