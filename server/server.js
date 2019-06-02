@@ -149,7 +149,7 @@ app.get('/:path',(req,res)=>{
 });
 app.route('/sql/sppost/:sp').post((req,res)=>{
     let sp=req.params['sp'];
-    res.end(JSON.stringify(req.headers));
+    res.end(JSON.stringify(req.body));
 
     // callSp(sp).then(result=>{
     //     res.end(JSON.stringify(result[0]));
