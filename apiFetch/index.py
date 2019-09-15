@@ -8,7 +8,7 @@ items = (response.read().decode("utf-8"))
 items = json.loads(items)
 items = [items[j*200:min((j+1)*200,len(items))] for j in range(math.ceil(len(items)/200))]
 
-
+# run infinitely to constantly collect data
 while True:
     spider.openCon()
     
