@@ -1,0 +1,31 @@
+<div id = "grid" [ngClass] = "{'hidden':loading}">
+<!-- data pulled from api -->
+    <img class = "itemImg" src="{{item.icon}}">
+    <div class = "itemName"> {{item.name}} </div>
+    <div class = "itemDesc">{{item.description}}</div>
+    <div class = "container" id = "container">
+        <div id = 'timeTable' class = "graph">
+        </div>
+        <div id = 'dualFrequencyTable' class = "graph">
+        </div>
+    </div>
+    <div id = "buyStats">
+        <h4>Buy Order Stats</h4>
+        <div class = "mean">mean: {{math.round(mean(buyData)*100)/100}} </div>
+        <div class = "variance">variance: {{math.round(math.pow(stdDeviation(buyData),2)*100)/100}} </div>
+        <div class = "stdDeviation">Std. Deviation {{math.round(stdDeviation(buyData)*100)/100}} </div>
+    </div>
+    <div id = "sellStats">
+        <h4>Sell Order Stats</h4>
+        <div class = "mean">mean: {{math.round(mean(sellData)*100)/100}}</div>
+        <div class = "variance">variance: {{math.round(math.pow(stdDeviation(sellData),2)*100)/100}}</div>
+        <div class = "stdDeviation">Std. Deviation {{math.round(stdDeviation(sellData)*100)/100}}</div>
+    </div>
+    <div id = "currentStats">
+        <h4>Current Stats</h4>
+        <div class = "currentMargin">Current Margins: {{curPrice.buys.unit_price - curPrice.sells.unit_price}} </div>
+        <div class = "currentROI">ROI Per item:  {{curPrice.buys.unit_price*.85-1 - curPrice.sells.unit_price}} </div>
+    </div>
+</div>
+<app-loading-screen [hidden]="!loading"></app-loading-screen>
+<!-- <img src = "https://ui-ex.com/images/transparent-background-loading.gif" class = "loading" [hidden]="!loading"> -->

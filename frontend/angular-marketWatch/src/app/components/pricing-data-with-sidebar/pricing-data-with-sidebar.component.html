@@ -1,0 +1,11 @@
+<div id = "gridContainer">
+  <div id = 'sidebar'>
+    <input ngModel="searchValue" placeholder="search items" (input)="searchLines($event.target.value)" type = 'text' >
+    <div id = 'sideLineItems'>
+      <app-sidebar-line-item class = 'sidebarLine' *ngFor="let line of apiData; let i=index"
+      [data]="line" (click)="createGraph(line.itemsID)"
+      ></app-sidebar-line-item>
+    </div>
+  </div>  
+  <app-price-graph id = "graph" [itemID] = "selectedItem"></app-price-graph>
+</div>

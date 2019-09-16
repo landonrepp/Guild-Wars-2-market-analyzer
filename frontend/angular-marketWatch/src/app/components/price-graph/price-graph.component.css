@@ -1,0 +1,74 @@
+.graph{
+    /* height needs to be the same as what's defined in the c3js objects */
+    height:200px;
+    border:1px solid;
+}
+#timeTable{
+    grid-area:timeTable;
+}
+#dualFrequencyTable{
+    grid-area:dualFrequencyTable;
+}
+.itemImg{
+    grid-area:itemImg;
+}
+.itemDesc{
+    grid-area:itemDesc;
+}
+.loading{
+    position: absolute;
+    top:0;
+    left:45%;
+    z-index: 999!;
+}
+.itemName{
+    grid-area:itemName;
+}
+
+#buyStats{
+    grid-area:buyStats;
+    border-right: 1px solid;
+    padding-left: 4%;
+}
+#sellStats{
+    grid-area:sellStats;
+    border-right: 1px solid;
+    padding-left: 4%;
+}
+#currentStats{
+    grid-area:currentStats;
+    padding-left: 4%;
+}
+.container{
+    grid-area:container;
+    display: grid;
+    grid-template-columns: repeat(2,48%);
+    grid-template-areas:
+    "timeTable dualFrequencyTable";
+}
+
+.hidden > *{
+    /* display:none; */
+    opacity: 0;
+}
+#grid{
+    display:grid;
+    grid-template-rows:auto;
+    grid-template-columns: repeat(4,25%);
+    grid-template-areas:
+    "itemImg itemName itemName itemName "
+    "itemDesc itemDesc itemDesc itemDesc"
+    "container container container container"
+    "buyStats sellStats currentStats .";
+}
+
+@media only screen and (max-width: 950px) {
+    .container{
+        display:grid;
+        grid-template-columns: 100%;
+        grid-template-rows:auto; 
+        grid-template-areas: 
+        "timeTable" 
+        "dualFrequencyTable";
+    }
+}

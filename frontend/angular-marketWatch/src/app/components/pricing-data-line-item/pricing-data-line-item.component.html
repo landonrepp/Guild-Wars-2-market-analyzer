@@ -1,0 +1,7 @@
+<div id = 'lineItem' class = 'lineItem'>
+    <img src={{data.icon}} class = "lineItemInfo lineItemIcon">
+    <span class = "lineItemInfo lineItemName" >{{data.name}}</span>
+    <span class = "lineItemInfo lineItemBuys"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{priceData.buys.unit_price/1000}}</span>
+    <span class = "lineItemInfo lineItemSells"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{priceData.sells.unit_price/1000}}</span>
+    <span class = "lineItemInfo lineItemProfit"><img class="currency" src="https://render.guildwars2.com/file/98457F504BA2FAC8457F532C4B30EDC23929ACF9/619316.png">{{math.round(priceData.sells.unit_price*.85-priceData.buys.unit_price)/1000}}</span>
+</div>

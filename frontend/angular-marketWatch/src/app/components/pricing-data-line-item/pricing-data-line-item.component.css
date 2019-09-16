@@ -1,0 +1,40 @@
+.lineItemIcon{
+    grid-area:lineItemIcon;
+    height:50px;
+    width:50px;
+}
+.lineItemName{
+    grid-area:lineItemName;
+}
+.lineItemBuys{
+    grid-area:lineItemBuys;
+}
+.lineItemSells{
+    grid-area:lineItemSells;
+}
+.lineItemProfit{
+    grid-area: lineItemProfit;
+}
+.currency{
+    height:16px;
+    width:16px;
+}
+:host-context(.back1) .lineItem{
+    background-color: rgb(255, 222, 161);
+}
+:host-context(.back2) .lineItem{
+    background-color: rgb(255, 250, 238);
+}
+.lineItem{
+    width:100%;
+    border-top:1px solid;
+    padding-bottom:10px;
+    display:grid;
+    grid-gap:0 2%;
+    grid-template-columns: 75px [col-start] repeat(4,20% [col-start]);
+    grid-template-rows:50px; 
+    grid-template-areas: "lineItemIcon lineItemName lineItemBuys lineItemSells lineItemProfit";
+}
+#lineItem:hover{
+    background-color:#a5a5a5;
+}

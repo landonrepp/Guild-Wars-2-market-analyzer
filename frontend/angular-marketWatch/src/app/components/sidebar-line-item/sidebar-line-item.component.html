@@ -1,0 +1,16 @@
+<div id = "gridContainer">
+    <img id = "image" src="{{data.itemData && data.itemData.icon || ''}}"/>
+    <div id="name">{{data.name}}</div>
+    <div id = "buyPrice">
+        buy: 
+            <img src = {{gRes.goldIcon}}/>{{math.floor(data.buyPrice/10000)}} 
+            <img src = {{gRes.silverIcon}}/>{{math.floor((data.buyPrice%10000)/100)}}
+            <img src = {{gRes.copperIcon}}/>{{math.floor((data.buyPrice%100))}}
+    </div>
+    <div id="sellPrice">sell:
+            <img src = {{gRes.goldIcon}}/>{{math.floor(data.sellPrice/10000)}} 
+            <img src = {{gRes.silverIcon}}/>{{math.floor((data.sellPrice%10000)/100)}}
+            <img src = {{gRes.copperIcon}}/>{{math.floor((data.sellPrice%100))}}
+    </div>
+    <div id = "investmentScore">score: {{data.investmentScore}}</div>
+</div>

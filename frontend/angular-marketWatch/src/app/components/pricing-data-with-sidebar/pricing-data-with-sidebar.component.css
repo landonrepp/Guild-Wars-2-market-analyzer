@@ -1,0 +1,39 @@
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: grey; 
+    border-radius: 10px;
+}
+#sidebar input{
+    height:5%;
+}
+#sideLineItems{
+    height: 95%;
+    flex:1;
+    overflow-y: scroll;
+    position: relative;
+}
+#sidebar{
+    height:100vh;
+    grid-area: sidebar;
+}
+#graph{
+    height: 96vh;
+    grid-area:graph;
+}
+
+#gridContainer{
+    display:grid;
+    grid-template-columns: repeat(4,25% [col-start]);
+    grid-template-areas: "sidebar graph graph graph";
+}

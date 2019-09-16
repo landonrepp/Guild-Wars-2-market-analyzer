@@ -1,0 +1,87 @@
+.back1{
+    background-color: black;
+}
+.back2{
+    background-color: bisque;
+}
+.lineItemIcon{
+    grid-area:lineItemIcon;
+    height:50px;
+    width:50px;
+}
+.lineItemName{
+    grid-area:lineItemName;
+}
+.lineItemBuys{
+    grid-area:lineItemBuys;
+}
+.lineItemSells{
+    grid-area:lineItemSells;
+}
+.lineItemProfit{
+    grid-area: lineItemProfit;
+}
+#modal-background{
+    width:100%;
+}
+#modal{
+    align-content: center;
+    align-items: center;
+    padding:0;
+    margin:0;
+    position:fixed;
+    width:100%;
+    height:100%;
+    /* background-color:white; */
+}
+.x-button{
+    cursor: pointer;
+}
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    width:100%;
+    grid-gap: 2%;
+    display:grid;
+    grid-template-columns: 75px [col-start] repeat(4,20% [col-start]);
+    grid-template-rows:25px; 
+    grid-template-areas: "lineItemIcon lineItemName lineItemBuys lineItemSells lineItemProfit";
+    background: white;
+  }
+  /* #header >*{
+      border-right:1px solid;
+  } */
+  #header-whitespace{
+      height:25px;
+  }
+.x-button{
+    font:bold;
+    font-size: 2em;
+    vertical-align: middle;
+    text-align: center;
+    z-index: 999!;
+    position:fixed;
+    float:right;
+    /* position: absolute;
+    left:95%;
+    border-radius: 5%; */
+    width:50px;
+    height:50px;
+    background-color: lightgray;
+}
+
+#modal-background{
+    width:100%;
+    height:100%;
+    padding: 0 10% 0 10%;
+    position:absolute;
+    background-color:white;
+}
+.hidden{
+    display:none;
+}
+#modal-content{
+    margin-top:40px;
+    width:100%;
+}

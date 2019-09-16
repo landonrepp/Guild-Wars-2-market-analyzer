@@ -1,0 +1,24 @@
+
+<div [ngClass] = "{hidden:component}" id = 'header-whitespace'></div>
+<div [ngClass] = "{hidden:!component}" id = 'header'>
+    <span  class = "lineItemInfo lineItemIcon"></span>
+    <span class = "lineItemHeader lineItemName" >Name</span>
+    <span class = "lineItemHeader lineItemBuys">Buy Price</span>
+    <span class = "lineItemHeader lineItemSells">Sell Price</span>
+    <span class = "lineItemHeader lineItemProfit">Profit</span>
+</div>
+<div id = "modal" (click) = "removeComponent($event)" [ngClass] = "{hidden:!component}">
+    <div id = "modal-background">
+        <div id="modal-content">
+            <ng-template #container>
+
+            </ng-template>
+        </div>
+        
+    </div>
+    <div id="x-button" class = 'x-button'>&times;</div>
+</div>
+<app-pricing-data-line-item *ngFor="let line of lineItemData; let i=index"
+[data]="line" [priceData]='lineItemPricing[i]'
+[ngClass] = "{back1:i%2==0, back2:i%2!=0}"
+(click)= "addComponent(graphComponent,line.id)"></app-pricing-data-line-item>

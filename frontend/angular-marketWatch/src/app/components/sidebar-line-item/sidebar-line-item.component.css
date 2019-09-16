@@ -1,0 +1,29 @@
+#name{
+    grid-area: name;
+    font:12px;
+}
+#buyPrice{
+    color:green;
+    grid-area: buyPrice;
+}
+#sellPrice{
+    color:red;
+    grid-area:sellPrice;
+}
+#investmentScore{
+    grid-area:investmentScore;
+}
+
+#gridContainer{
+    border-bottom: 1px solid;
+    display:grid;
+    grid-template-columns: 25%;
+    grid-template-rows:35px; 
+    grid-template-areas: 
+    "name name name"
+    "image buyPrice investmentScore"
+    "image sellPrice .";
+}
+#gridContainer:hover{
+    background-color: #aaaaaa;
+}
